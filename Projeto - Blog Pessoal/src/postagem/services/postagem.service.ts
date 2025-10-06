@@ -12,7 +12,6 @@ export class PostagemService {
     private TemaService: TemaService,
   ) {}
 
-  //buscar tudo
   async findAll(): Promise<Postagem[]> {
     return await this.postagemRepository.find({
       relations: {
@@ -22,7 +21,6 @@ export class PostagemService {
     });
   }
 
-  //buscar por id
   async findById(id: number): Promise<Postagem> {
     const postagem = await this.postagemRepository.findOne({
       where: {
@@ -40,7 +38,6 @@ export class PostagemService {
     return postagem;
   }
 
-  //por titulo
   async findAllByTitulo(titulo: string): Promise<Postagem[]> {
     return await this.postagemRepository.find({
       where: {
@@ -53,14 +50,12 @@ export class PostagemService {
     });
   }
 
-  //criar
   async create(postagem: Postagem): Promise<Postagem> {
     await this.TemaService.findById(postagem.tema.id);
 
     return await this.postagemRepository.save(postagem);
   }
 
-  //atualizar
   async update(postagem: Postagem): Promise<Postagem> {
     await this.findById(postagem.id);
 
@@ -69,7 +64,6 @@ export class PostagemService {
     return await this.postagemRepository.save(postagem);
   }
 
-  //apagar
   async delete(id: number): Promise<DeleteResult> {
     await this.findById(id);
 

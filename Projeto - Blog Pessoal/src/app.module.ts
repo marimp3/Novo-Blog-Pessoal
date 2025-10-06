@@ -8,7 +8,6 @@ import { TemaModule } from './tema/tema.module';
 import { Usuario } from './usuario/entities/usuario.entity';
 import { UsuarioModule } from './usuario/usuario.module';
 
-// conexao com o banco de dados atraves de TypeORM
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -20,7 +19,6 @@ import { UsuarioModule } from './usuario/usuario.module';
       database: 'db_blogpessoal',
       entities: [Postagem, Tema, Usuario],
       synchronize: true,
-      // logging: true, //opcional
     }),
 
     PostagemModule,
